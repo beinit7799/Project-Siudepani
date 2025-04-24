@@ -1,0 +1,54 @@
+/* adminNav.css */
+.admin-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e1e2f;
+  padding: 15px 30px;
+  color: white;
+  position: fixed;  /* Fix the navbar to the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.nav-logo a {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-items {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-items a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 6px 12px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-items a:hover {
+  background-color: #2f80ed;
+  border-radius: 5px;
+}
+
+.logout-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}

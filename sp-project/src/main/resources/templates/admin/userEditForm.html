@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Member</title>
+  <link rel="stylesheet" href="/css/userEditForm.css">
+</head>
+<body>
+  <th:block th:insert="adminNav.html"></th:block>
+
+  <div class="container">
+    <h1>Edit Member Details</h1>
+    <form th:action="@{/admin/update}" th:object="${eUser}" method="post" class="edit-form">
+      <input type="hidden" th:field="*{id}" />
+
+      <div class="form-group">
+        <label for="fname">First Name:</label>
+        <input type="text" th:field="*{fname}" id="fname" />
+      </div>
+
+      <div class="form-group">
+        <label for="lname">Last Name:</label>
+        <input type="text" th:field="*{lname}" id="lname" />
+      </div>
+
+      <div class="form-group">
+        <label for="number">Number:</label>
+        <input type="text" th:field="*{number}" id="number" />
+      </div>
+
+      <div class="form-group">
+        <label for="amount">Amount:</label>
+        <input type="text" th:field="*{amount}" id="amount" />
+      </div>
+
+      <button type="submit" class="btn save">Update</button>
+    </form>
+  </div>
+</body>
+</html>

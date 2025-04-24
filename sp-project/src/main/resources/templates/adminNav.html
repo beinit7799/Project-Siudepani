@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+  <link rel="stylesheet" href="/css/adminNav.css">
+</head>
+<body>
+<header>
+  <nav class="admin-navbar">
+    <div class="nav-logo">
+      <a href="/admin/dashboard">AdminPanel</a>
+    </div>
+    <ul class="nav-items">
+      <li><a href="/admin/ulist">Members List</a></li>
+      <li><a href="/admin/users/add">Add Member</a></li>
+      <li><a href="/admin/events/add">Add Event</a></li>
+    </ul>
+     <div >
+        <form action="/users/logout" method="post">
+  			<button type="submit" class="logout-btn">Logout</button>
+		</form>
+      </div>
+  </nav>
+</header>
+</body>
+</html>

@@ -1,0 +1,80 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.top-bar {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.pdf-btn {
+  background-color: #2f80ed;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pdf-btn:hover {
+  background-color: #1366d6;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table th, .user-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: #f0f0f0;
+}
+
+.btn {
+  padding: 6px 12px;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.edit {
+  background-color: #27ae60;
+}
+
+.edit:hover {
+  background-color: #1e874b;
+}
+
+.delete {
+  background-color: #e74c3c;
+  margin-left: 5px;
+}
+
+.delete:hover {
+  background-color: #c0392b;
+}
