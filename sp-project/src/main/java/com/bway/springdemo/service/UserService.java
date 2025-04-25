@@ -9,6 +9,8 @@ public interface UserService {
 	void addUser(User u);
 	void DeleteUser(long id);
 	void UpdateUser(User u);
+    void saveUser(User user);
+
 	
 	void userSignup(User user);
 	User userLogin(String un, String pass);

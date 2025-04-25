@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bway.springdemo.model.User;
+import com.bway.springdemo.repository.UserRepo;
 import com.bway.springdemo.service.UserService;
 import com.bway.springdemo.utils.UserPdf;
 
@@ -22,6 +23,8 @@ public class AdminController {
 	
 	@Autowired
     private UserService userService;
+	
+	private  UserRepo userRepo;
 	
 	@GetMapping("/adminPanel")
 	public String getAdminPanel() {
@@ -39,7 +42,6 @@ public class AdminController {
 	    model.addAttribute("eUser", userService.getUserById(id));  
 	    return "admin/userEditForm";
 	}
-
 	
 	@PostMapping("/update")
 	public String updateUser(@ModelAttribute User user) {

@@ -26,8 +26,24 @@ public class UserServiceimpl implements UserService {
     }
 
     @Override
-    public void UpdateUser(User u) {
-        userRepo.save(u);
+    public void UpdateUser(User updatedUser) {
+        User existingUser = userRepo.findById(updatedUser.getId()).orElse(null);
+        
+        if (existingUser != null) {
+            existingUser.setFname(updatedUser.getFname());
+            existingUser.setLname(updatedUser.getLname());
+            existingUser.setNumber(updatedUser.getNumber());
+            existingUser.setAmount(updatedUser.getAmount());
+            existingUser.setRole(updatedUser.getRole());            
+            // password is intentionally left unchanged
+            userRepo.save(existingUser);
+        }
+    }
+
+
+    @Override
+    public void saveUser(User user) {
+        userRepo.save(user);
     }
 
     @Override
@@ -43,8 +59,10 @@ public class UserServiceimpl implements UserService {
     
     @Override
 	public void userSignup(User user) {
+    	if (user.getRole() == null || user.getRole().isEmpty()) {
+            user.setRole("USER");
+        }
 		userRepo.save(user);
-		
 	}
 
 	@Override

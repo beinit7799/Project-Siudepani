@@ -21,6 +21,7 @@
           <th>First Name</th>
           <th>Last Name</th>
           <th>Number</th>
+          <th>Role</th>
           <th>Total Amount</th>
           <th>Actions</th>
         </tr>
@@ -31,6 +32,7 @@
           <td>[[${u.fname}]]</td>
           <td>[[${u.lname}]]</td>
           <td>[[${u.number}]]</td>
+          <td>[[${u.role}]]</td>
           <td>[[${u.amount}]]</td>
           <td>
             <a th:href="@{/admin/edit/{id}(id=${u.id})}" class="btn edit">Edit</a>
