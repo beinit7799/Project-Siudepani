@@ -2,6 +2,7 @@ package com.bway.springdemo.serviceimpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,14 @@ public class EmailServiceimpl implements EmailService {
         } catch (MessagingException e) {
             throw new RuntimeException("Failed to send contact email", e);
         }
+    }
+
+    public void sendEmail(String to, String subject, String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("your-email@gmail.com"); 
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(text);
+        mailSender.send(message);
     }
 }

@@ -75,4 +75,9 @@ public class UserServiceimpl implements UserService {
 	public User getUserByUsername(String username) {
 		return userRepo.findByUsername(username);
 	}
+
+	@Override
+	public User getUserByEmail(String email) {
+		return userRepo.FindByEmail(email);
+	}
 }
