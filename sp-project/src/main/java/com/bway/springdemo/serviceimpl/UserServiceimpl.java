@@ -78,6 +78,6 @@ public class UserServiceimpl implements UserService {
 
 	@Override
 	public User getUserByEmail(String email) {
-		return userRepo.FindByEmail(email);
+		return userRepo.findByEmail(email);
 	}
 }

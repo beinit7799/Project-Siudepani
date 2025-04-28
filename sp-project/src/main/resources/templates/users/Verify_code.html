@@ -41,12 +41,10 @@
     </style>
 </head>
 <body>
- 	<th:block th:insert="nav.html"></th:block>
-
 	<div class="container">
 	    <h2>Enter Recovery Code</h2>
 	    <form action="/verify-code" method="post">
-	        <input type="text" name="recoveryCode" placeholder="Enter the code sent to your email" required>
+	        <input type="text" name="code" placeholder="Enter the code sent to your email" required>
 	        <button type="submit">Verify Code</button>
 	    </form>
 	</div>

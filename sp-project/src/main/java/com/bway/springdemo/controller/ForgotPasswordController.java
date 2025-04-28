@@ -1,6 +1,7 @@
 package com.bway.springdemo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,9 @@ import java.util.Random;
 
 @Controller
 public class ForgotPasswordController {
-
+	@Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+	
     @Autowired
     private EmailService emailService;
 
@@ -23,9 +26,9 @@ public class ForgotPasswordController {
     private String recoveryCode;
     private String userEmail;
 
-    @GetMapping("/forgot-password")
+    @GetMapping("/forgotPassword")
     public String forgotPasswordForm() {
-        return "forgotPasswordForm"; // HTML form to input email
+        return "users/ForgotPassword"; // HTML form to input email
     }
 
     @PostMapping("/send-recovery-code")
@@ -34,7 +37,7 @@ public class ForgotPasswordController {
 
         if (user == null) {
             model.addAttribute("error", "No user found with this email.");
-            return "forgotPasswordForm";
+            return "users/ForgotPassword";
         }
 
         recoveryCode = String.format("%06d", new Random().nextInt(999999));
@@ -42,26 +45,34 @@ public class ForgotPasswordController {
 
         emailService.sendEmail(email, "Your Password Recovery Code", "Recovery Code: " + recoveryCode);
 
-        return "enterRecoveryCode"; // HTML form to input the code
+        return "users/Verify_code"; // HTML form to input the code
     }
 
-    @PostMapping("/verify-recovery-code")
+    @PostMapping("/verify-code")
     public String verifyRecoveryCode(@RequestParam("code") String code, Model model) {
         if (code.equals(recoveryCode)) {
-            return "resetPasswordForm"; // HTML form to set new password
+            return "users/Reset_password"; // HTML form to set new password
         } else {
             model.addAttribute("error", "Invalid recovery code.");
-            return "enterRecoveryCode";
+            return "users/Verify_code";
         }
     }
 
     @PostMapping("/reset-password")
-    public String resetPassword(@RequestParam("password") String password, Model model) {
-        User user = userService.getUserByEmail(userEmail);
-        user.setPassword(password); // You should encrypt this if you use encryption
-        userService.UpdateUser(user);
+    public String resetPassword(@RequestParam("newPassword") String newPassword,
+                                 @RequestParam("confirmPassword") String confirmPassword,
+                                 Model model) {
+        if (newPassword.equals(confirmPassword)) {
+            User user = userService.getUserByEmail(userEmail);
+            user.setPassword(passwordEncoder.encode(newPassword));
 
-        return "redirect:/login"; // Back to login after successful reset
+            userService.UpdateUser(user); 
+            return "redirect:/login";
+        } else {
+            model.addAttribute("error", "Passwords do not match.");
+            return "users/Reset_password"; 
+        }
     }
+
 }
 
