@@ -43,6 +43,10 @@
 <body>
 	<div class="container">
 	    <h2>Enter Recovery Code</h2>
+	    <h2>Reset Password</h2>
+	     <div th:if="${error}" class="alert alert-danger">
+            <p th:text="${error}" style="color:red"></p>
+        </div>
 	    <form action="/verify-code" method="post">
 	        <input type="text" name="code" placeholder="Enter the code sent to your email" required>
 	        <button type="submit">Verify Code</button>
