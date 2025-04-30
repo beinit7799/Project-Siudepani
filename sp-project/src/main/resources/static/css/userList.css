@@ -78,3 +78,27 @@ h1 {
 .delete:hover {
   background-color: #c0392b;
 }
+
+form button[type="submit"],
+form button[type="button"] {
+  padding: 3px 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.search{
+	padding: 5px 10px;
+	margin-bottom: 5px;
+	
+}
+
+
+form a button {
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+}
+
+form a button:hover {
+  background-color: #d0d0d0;
+}

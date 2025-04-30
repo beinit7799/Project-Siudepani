@@ -1,6 +1,8 @@
 package com.bway.springdemo.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,13 +59,6 @@ public class AdminController {
 			return "redirect:/admin/ulist";
 		}
 		
-		@GetMapping("/pdf")
-		public ModelAndView exportUserPdf() {
-		    ModelAndView mv = new ModelAndView();
-		    mv.addObject("user", userService.getAllUsers());
-		    mv.setView(new UserPdf());
-		    return mv;
-		}
 		
 		@GetMapping("/memberAdd")
 		public String getUserAddForm(Model model) {
@@ -85,11 +80,23 @@ public class AdminController {
 		 @PostMapping("/save-broadcast")
 		    public String saveBroadcast(@RequestParam("message") String message) {
 		        broadcastMessage = message;
-		        return "redirect:/admin/event"; // Go back to form or wherever you want
+		        return "redirect:/admin/event";
 		 }
 		 
 		 public static String getBroadcastMessage() {
 		        return broadcastMessage;
 		 }
+		 
+		 @GetMapping("/search")
+		 public String searchUsers(@RequestParam("query") String query, Model model) {
+		     List<User> results = userService.searchUsers(query);
+		     if (results.isEmpty()) {
+		         model.addAttribute("notFound", true);
+		     } else {
+		         model.addAttribute("user", results);
+		     }
+		     return "admin/userList";
+		 }
+
 
  }

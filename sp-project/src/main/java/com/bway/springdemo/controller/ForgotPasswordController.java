@@ -21,14 +21,14 @@ public class ForgotPasswordController {
     private EmailService emailService;
 
     @Autowired
-    private UserService userService; // Your service to get user by email
+    private UserService userService; 
 
     private String recoveryCode;
     private String userEmail;
 
     @GetMapping("/forgotPassword")
     public String forgotPasswordForm() {
-        return "users/ForgotPassword"; // HTML form to input email
+        return "users/ForgotPassword"; 
     }
 
     @PostMapping("/send-recovery-code")
@@ -45,13 +45,13 @@ public class ForgotPasswordController {
 
         emailService.sendEmail(email, "Your Password Recovery Code", "Recovery Code: " + recoveryCode);
 
-        return "users/Verify_code"; // HTML form to input the code
+        return "users/Verify_code"; 
     }
 
     @PostMapping("/verify-code")
     public String verifyRecoveryCode(@RequestParam("code") String code, Model model) {
         if (code.equals(recoveryCode)) {
-            return "users/Reset_password"; // HTML form to set new password
+            return "users/Reset_password";
         } else {
             model.addAttribute("error", "Invalid recovery code.");
             return "users/Verify_code";

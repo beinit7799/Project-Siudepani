@@ -80,4 +80,9 @@ public class UserServiceimpl implements UserService {
 	public User getUserByEmail(String email) {
 		return userRepo.findByEmail(email);
 	}
+	
+	@Override
+	 public List<User> searchUsers(String query) {
+	     return userRepo.findByFnameContainingIgnoreCaseOrLnameContainingIgnoreCaseOrEmailContainingIgnoreCase(query, query, query);
+	 }
 }

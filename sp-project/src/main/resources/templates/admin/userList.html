@@ -6,13 +6,23 @@
 </head>
 <body>
  	<th:block th:insert="adminNav.html"></th:block>
+ 	
   <div class="container">
     <h1>Member Management Panel</h1>
+	
+	<form th:action="@{/admin/search}" method="get" style="display: flex; align-items: center; gap: 8px;">
+  		<input type="text" name="query" class="search" placeholder="Search by name or email" required>
+  		<button type="submit">Search</button>
+  
+  		<a th:href="@{/admin/ulist}" style="text-decoration: none;">
+    		<button type="button" title="Show all users">&#x2192;</button>
+  		</a>
+	</form>
 
-    <div class="top-bar">
-      <button class="pdf-btn" onclick="location.href='/admin/pdf'">Download PDF</button>
-    </div>
 
+	<p th:if="${notFound}" style="color:red;">User not found</p>
+
+		
     <table class="user-table">
       <thead>
         <tr>
@@ -20,6 +30,7 @@
           <th>First Name</th>
           <th>Last Name</th>
           <th>Number</th>
+          <th>Email</th>
           <th>Role</th>
           <th>Total Amount</th>
           <th>Actions</th>
@@ -31,6 +42,7 @@
           <td>[[${u.fname}]]</td>
           <td>[[${u.lname}]]</td>
           <td>[[${u.number}]]</td>
+          <td>[[${u.email}]]</td>
           <td>[[${u.role}]]</td>
           <td>[[${u.amount}]]</td>
           <td>
