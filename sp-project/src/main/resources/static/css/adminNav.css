@@ -52,3 +52,39 @@
 .logout-btn:hover {
   background-color: #c0392b;
 }
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #1e1e2f;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1000;
+  flex-direction: column;
+}
+
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f05454;
+  border-radius: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Upload Event Image</title>
+  <link rel="stylesheet" href="/css/Image.css">
+</head>
+<body>
+  <th:block th:insert="adminNav.html"></th:block>
+
+  <div class="page-content">
+    <h2>Upload Event Image</h2>
+    <form th:action="@{/admin/uploadImage}" method="post" enctype="multipart/form-data">
+      <label>Title:</label>
+      <input type="text" name="title" required><br><br>
+      <label>Select Image:</label>
+      <input type="file" name="image" accept="image/*" required><br><br>
+      <button type="submit">Upload</button>
+    </form>
+
+    <p th:if="${message}" th:text="${message}" style="color:green;"></p>
+    <p th:if="${error}" th:text="${error}" style="color:red;"></p>
+  </div>
+</body>
+</html>

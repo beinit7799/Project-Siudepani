@@ -14,8 +14,15 @@
     <ul class="nav-items">
       <li><a href="/admin/ulist">Members List</a></li>
       <li><a href="/admin/memberAdd">Add Member</a></li>
-      <li><a href="/admin/event">Add Event</a></li>
-    </ul>
+	  <li class="dropdown">
+          <a href="#">Events</a>
+          <ul class="dropdown-menu">
+            <li><a href="/users/upcomingEvents">Add Events</a></li>
+            <li><a href="/admin/broadcast">Broadcast message</a></li>
+            <li><a href="/admin/uploadImage">Gallery</a></li>
+          </ul>
+      </li>
+     </ul>
      <div >
         <form action="/users/logout" method="post">
   			<button type="submit" class="logout-btn">Logout</button>

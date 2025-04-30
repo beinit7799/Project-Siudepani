@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.bway.springdemo.model.User;
+import com.bway.springdemo.service.EventImageService;
 import com.bway.springdemo.service.UserService;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -22,8 +23,9 @@ public class UserController {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-
-   
+    
+    @Autowired
+    private EventImageService eventImageService;
 
     @GetMapping("/login")
     public String getLogin() {
@@ -66,11 +68,16 @@ public class UserController {
         return "users/home";
     }
 
-
-
     @GetMapping("/contact")
     public String getContact() {
         return "users/contact";
     }
+    
+    @GetMapping("/gallery")
+    public String getGallery(Model model) {
+        model.addAttribute("images", eventImageService.getAllImages());
+        return "users/Gallery";
+    }
+    
     
 }

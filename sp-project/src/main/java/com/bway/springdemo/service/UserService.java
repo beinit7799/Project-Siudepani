@@ -2,8 +2,10 @@ package com.bway.springdemo.service;
 
 import java.util.List;
 
-import com.bway.springdemo.model.User;
+import org.springframework.stereotype.Service;
 
+import com.bway.springdemo.model.User;
+@Service
 public interface UserService {
 
 	void addUser(User u);
