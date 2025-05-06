@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Navbar</title>
+  <link rel="stylesheet" href="/css/nav.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#">MyCompany</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/users/home">Home</a></li>
+        <li><a href="/users/userView">User Profile</a></li>
+
+        <!-- Dropdown for Events -->
+        <li class="dropdown">
+          <a href="#">Events</a>
+          <ul class="dropdown-menu">
+            <li><a href="/users/upcomingEvents">Upcoming Events</a></li>
+            <li><a href="/users/pastEvents">Past Events</a></li>
+            <li><a href="/users/gallery">Event Gallery</a></li>
+          </ul>
+        </li>
+
+        <li><a href="/users/contact">Contact</a></li>
+        <li><a href="/users/contact">About us</a></li>
+      </ul>
+
+      <!-- Logout -->
+      <div>
+        <form action="/users/logout" method="post">
+          <button type="submit" class="logout-button">Logout</button>
+        </form>
+      </div>
+    </nav>
+  </header>
+</body>
+</html>

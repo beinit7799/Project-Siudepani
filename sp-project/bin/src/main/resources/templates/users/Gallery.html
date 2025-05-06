@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Gallery</title>
+  <link rel="stylesheet" href="/css/Gallery.css">
+</head>
+<body>
+  <th:block th:insert="nav.html"></th:block>
+
+  <main class="gallery-container">
+    <h1 class="gallery-title">Gallery</h1>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item" th:each="img : ${images}">
+        <img th:src="@{'/images/' + ${img.fileName}}" th:alt="${img.title}">
+        <div class="item-overlay">
+          <p class="caption" th:text="${img.title}"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

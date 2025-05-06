@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify Recovery Code</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        input[type="text"],
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1e87d9;
+        }
+    </style>
+</head>
+<body>
+	<div class="container">
+	    <h2>Enter Recovery Code</h2>
+	    <h2>Reset Password</h2>
+	     <div th:if="${error}" class="alert alert-danger">
+            <p th:text="${error}" style="color:red"></p>
+        </div>
+	    <form action="/verify-code" method="post">
+	        <input type="text" name="code" placeholder="Enter the code sent to your email" required>
+	        <button type="submit">Verify Code</button>
+	    </form>
+	</div>
+
+</body>
+</html>
